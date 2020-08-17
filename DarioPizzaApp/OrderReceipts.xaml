@@ -1,0 +1,67 @@
+﻿<Page
+    x:Class="DarioPizzaApp.OrderReceipts"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DarioPizzaApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="#FFFFE6AF">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="9*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" Text="Papa Dario's Pizza" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="23" FontWeight="ExtraBold" Foreground="#FFCB8D3E" Height="39" Width="217"/>
+            <TextBlock HorizontalAlignment="Center" Text="Welcome to Papa's online pizza shop!" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" FontWeight="Medium" FontStyle="Italic" Foreground="#FFCB8D3E" Height="52" Margin="0,46,0,0" Width="570"/>
+        </Grid>
+        <RelativePanel Grid.Row="1">
+            <ListView Name="InventoryList"
+                  SelectionMode="Single"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.IsVerticalRailEnabled="True"
+                  ScrollViewer.VerticalScrollMode="Enabled"
+                  ScrollViewer.HorizontalScrollMode="Enabled"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  ScrollViewer.IsHorizontalRailEnabled="True"
+                  Margin="20">
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal"  >
+                            <TextBlock Text="OrderID" Margin="8,0" Width="80" Foreground="DarkRed" />
+                            <TextBlock Text="First Name" Width="100" Foreground="DarkRed" />
+                            <TextBlock Text="Shipping Address" Width="270" Foreground="DarkRed" />
+                            <TextBlock Text="Topping Name" Width="150" Foreground="DarkRed" />
+                            <TextBlock Text="Side Name" Width="150" Foreground="DarkRed" />
+                            <TextBlock Text="Beverage Name" Width="150" Foreground="DarkRed" />
+                            <TextBlock Text="Combo" Width="90" Foreground="DarkRed" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="local:Order">
+                        <StackPanel Orientation="Horizontal" >
+                            <TextBlock Name="OrderId"
+                                    Text="{x:Bind OrderID.ToString()}"
+                                    Width="80" />
+                            <TextBlock Text="{x:Bind FirstName}"
+                                    Width="100" />
+                            <TextBlock Text="{x:Bind ShippingAddress}"
+                                   Width="270" />
+                            <TextBlock Text="{x:Bind ToppingName}"
+                                   Width="150" />
+                            <TextBlock Text="{x:Bind SideName}"
+                                   Width="150" />
+                            <TextBlock Text="{x:Bind BeverageName}"
+                                   Width="150" />
+                            <TextBlock Text="{x:Bind ComboID.ToString()}"
+                                   Width="90" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </RelativePanel>
+    </Grid>
+</Page>
